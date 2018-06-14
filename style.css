@@ -1,0 +1,21 @@
+#id {
+  color: black;
+}
+
+.anchor {
+  margin-left: 5px;
+  background-color: grey;
+  color: white;
+  cursor: pointer;
+  padding: .03rem;
+  font-size: 1.05rem;
+  transition: color .25s;
+}
+
+.anchor:hover {
+  color: purple;
+}
+
+.done {
+  text-decoration: line-through;
+}
