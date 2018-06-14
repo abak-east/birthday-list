@@ -11,6 +11,8 @@ function inputLength() {
 }
 
 // Optional. It is used to identify each new node.
+// Conditional: without it, if your list is empty, it will throw a null error,
+//              because there is no oldKey value to pick from.
 function assignAttribute() {
   const attribute = document.createAttribute("key");
   if (ul.childNodes > 0) {
