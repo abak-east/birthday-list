@@ -1,13 +1,16 @@
 // Javascript file
+
+// VARIABLE-DECLARATION
 const button = document.getElementById("enter");
 const input = document.getElementById("userinput");
 const ul = document.querySelector("ul");
 
+// Returns the length of "userinput".
 function inputLength() {
   return input.value.length;
 }
 
-// This is optional. It is used to identify each new node.
+// Optional. It is used to identify each new node.
 function assignAttribute() {
   const attribute = document.createAttribute("key");
   if (ul.childNodes > 0) {
@@ -43,25 +46,34 @@ function createListElement() {
   input.value = "";
 }
 
+// Uses the "click" event listener to apply an action on <button>.
 function addListAfterClick() {
   if (inputLength() > 0) {
     createListElement();
   }
 }
 
+// Needs an event parameter to identify the Enter key.
 function addListAfterKeyPress(e) {
   if (inputLength() > 0 && e.keyCode === 13) {
     createListElement();
   }
 }
 
-// Used textContent instead of innerText due to compatibility.
+// Optional/not used. Used textContent instead of innerText due to compatibility.
 function getTextContent() {
   let li = document.querySelectorAll("li");
   let text = [];
   li.forEach(element => text.push(element.textContent));
 }
 
+/*
+window.event		        <-- Uses the action from the window object.
+e.target		            <-- Selects an element.
+Conditional             <-- Without this conditional, it will try to get the parent node of each clicked element and will throw errors.
+target.parentNode	      <-- Uses the selected target to get the parent node (if you meant to apply an action to it's parent).
+ul.removeChild(anchor)	<-- Applies remove on your unordered-list <ul> using the variable "anchor".
+*/
 function deleteLi(e) {
   e = window.event;
   const target = e.target;
@@ -73,6 +85,12 @@ function deleteLi(e) {
   }
 }
 
+/*
+window.event		                <-- Uses the action from the window object.
+e.target		                    <-- Selects an element.
+Conditional                     <-- Without this conditional, it will apply line-through to other nodes.
+target.classList.toggle("done") <-- Toggles classList on your selected node. Needs css text-decoration.
+*/
 function toggler(e) {
   e = window.event;
   const target = e.target;
@@ -83,6 +101,7 @@ function toggler(e) {
   }
 }
 
+// EVENT-LISTENERS
 button.addEventListener("click", addListAfterClick);
 
 input.addEventListener("keypress", addListAfterKeyPress);
